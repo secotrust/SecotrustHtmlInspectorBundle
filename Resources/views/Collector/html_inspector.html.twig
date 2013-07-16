@@ -1,0 +1,14 @@
+{% extends '@WebProfiler/Profiler/layout.html.twig' %}
+
+{% block toolbar %}
+    {% set text %}
+    Open the console to view the HTML Inspector output, click to repeat the inspection.
+    {% endset %}
+    {% set icon %}
+    <a href="#" id="html-inspector">
+    <img onload="(function(){ var js = document.createElement('script'); js.src = '{{ path('secotrust_html_inspector_js') }}'; document.getElementsByTagName('body')[0].appendChild(js);})();" width="20" height="28" alt="HTML Inspector" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAcCAMAAACj+uTiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAAbZQTFRFAAAAIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gKSUmIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gIx8gJCAhJSEiJiIjIx8gIx8gIx8gIx8gIx8gJSEiJiIjJyMkKCQlKSUmKycoLCgpLSkqLyssLywtMi4vMy8wNDAxNTEyNTIzNzQ0ODQ1OTU2PDg5Pzs8QT0+Qj9AQ0BBRkNDR0NESERFSEVGSUZHS0hJTElJTkpLT0tMUE1OUU5PUk9QVFFRVVJTWFVWWVZXX1xdYV5eZWJjZ2RlaGVlbmxsb21tdHFyd3V1eHV2fXt7f3x9g4GBhIKCioiIjYuLj42Ok5GRlJKSlJKTmJaWn52doJ6eoqGho6GipKKjqKenraysrq2tr66us7GytbS0ubi5urm5v72+w8LCxcTExsXFz87O0M/P0tHR09LS1NPU2tra4ODg4eHh5ubm6Ojo6enp8vHx+/v7/Pz8/v7+////Oa/NLgAAADR0Uk5TAAYHChobHCgyM0ZHSUpeYGF0d3h5jI6PkKOkpaanur2+xdLU1dbY3evs7fHy8/T19vz9/v5nRUoAAAFDSURBVBgZBcFLTxNRGADQM9ML0xYqtD4W6EIXxMTg/9d/oolLMbqAhjSdPu733fGc7vPQmcAEE5iIEisAAGBbAgA3K4DDU5QAwKwAEH0FAACplsDdF2A+AL9eQpRErIDhAmhS9okRAFClLIF96/04sRiAkyZKYopL27+sbwBC9pmorAAgZZZ2vOJ85cOa+QLsf4dDKyrO3N4yXIAnTdULnIEJqFIoEv8CDHPeLhxNUlHx50k7snnFmipVReDTV+N34IIqhF5gxyUmFKom9RIjs4eNzvL9jLOQisC+9d39/aG+HtCqFHqJdobFmwFqTikV0Xq+3b1bX8/I4/Z5p2lV0Y5LpsdHw8dNvJwhHSaFCjj9XN+AOqoUAgDa4XSoBB3DcrUp4GoYj4jn3XjSgdl8uVp3MG13+1NCB6Asr693+zEA/gNGIaq7xxM+qwAAAABJRU5ErkJggg==" />
+    <span id="html-inspector-count" class="sf-toolbar-status">?</span>
+    </a>
+    {% endset %}
+    {% include '@WebProfiler/Profiler/toolbar_item.html.twig' with { 'link': false } %}
+{% endblock %}

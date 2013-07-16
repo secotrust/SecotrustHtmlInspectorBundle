@@ -1,0 +1,36 @@
+(function(){
+    var inspect = function() {
+        HTMLInspector.inspect({
+            exclude: [
+                '.sf-toolbar'
+            ],
+            excludeSubTree: [
+                '.sf-toolbar'
+            ],
+            onComplete: function(errors) {
+                var count = errors.length;
+                var classes = 'sf-toolbar-status';
+                if (0 === count) {
+                    classes += ' sf-toolbar-status-green';
+                } else if (10 > count) {
+                    classes += ' sf-toolbar-status-yellow';
+                } else {
+                    classes += ' sf-toolbar-status-red';
+                }
+                var elem = document.getElementById('html-inspector-count');
+                elem.innerHTML = count;
+                elem.className = classes;
+                errors.forEach(function(error) {
+                    console.warn(error.message, error.context);
+                });
+            }
+        });
+    };
+    var js = document.createElement('script');
+    js.src = '{{ asset('bundles/secotrusthtmlinspector/js/html-inspector.js') }}';
+    {% if autorun %}
+    js.onload = inspect;
+    {% endif %}
+    document.getElementsByTagName('body')[0].appendChild(js);
+    document.getElementById('html-inspector').onclick = inspect;
+})();

@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="secotrust_html_inspector.controller.class">Secotrust\Bundle\HtmlInspectorBundle\Controller\JavaScriptController</parameter>
+        <parameter key="secotrust_html_inspector.data_collector.class">Secotrust\Bundle\HtmlInspectorBundle\DataCollector\HtmlInspectorDataCollector</parameter>
+    </parameters>
+
+    <services>
+        <service id="secotrust_html_inspector.controller" class="%secotrust_html_inspector.controller.class%">
+            <argument type="service" id="templating" />
+            <argument>%secotrust_html_inspector.parameters%</argument>
+        </service>
+        <service id="data_collector.secotrust_html_inspector" class="%secotrust_html_inspector.data_collector.class%" public="false">
+            <tag name="data_collector" template="SecotrustHtmlInspectorBundle:Collector:html_inspector" id="html_inspector" />
+        </service>
+    </services>
+</container>
